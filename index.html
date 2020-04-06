@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon" rel="stylesheet"
+        type="text/css" />
+    <style>
+        body {
+            font-family: Pokemon;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>P o k é d e x</h1>
+        <div class="generations">
+            <div class="active"></div>
+            <ul id='menu'>
+                <li class="active" id="g1">Gen1</li>
+                <li id='g2'>Gen2</li>
+                <li id='g3'>Gen3</li>
+                <li id='g4'>Gen4</li>
+                <li id='g5'>Gen5</li>
+                <li id='g6'>Gen6</li>
+                <li id='g7'>Gen7</li>
+            </ul>
+            <ul id="types">
+                <li id="t1">Steel</li>
+                <li id='t2'>Fire</li>
+                <li id='t3'>Grass</li>
+                <li id='t4'>Electric</li>
+                <li id='t5'>Water</li>
+                <li id='t6'>Ice</li>
+                <li id='t7'>Ground</li>
+                <li id="t8">Rock</li>
+                <li id='t9'>Fairy</li>
+                <li id='t0'>Poison</li>
+                <li id='ta'>Bug</li>
+                <li id='tb'>Dragon</li>
+                <li id='tc'>Psychic</li>
+                <li id='td'>Flying</li>
+                <li id='te'>Fighting</li>
+                <li id='tf'>Ghost</li>
+                <li id='tg'>Dark</li>
+                <li id='th'>Normal</li>
+                <li id='ti' class='active'>None</li>
+            </ul>
+        </div>
+        <ul data-js="pokedex" class="pokedex" id="pokedex">
+
+        </ul>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        const gens = {
+            g1: [151, 0],
+            g2: [100, 151],
+            g3: [135, 251],
+            g4: [107, 386],
+            g5: [156, 493],
+            g6: [72, 649],
+            g7: [86, 721]
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            Render(gens.g1[0], gens.g1[1])
+
+            $("#menu li").each(function () {
+                $(this).on("click", function () {
+                    $("#menu li").removeClass('active');
+                    $(this).addClass('active')
+                    Render(gens[$(this).attr('id')][0], gens[$(this).attr('id')][1])
+                    $("#types li").removeClass('active');
+                    $('#types li#ti').addClass('active')
+                })
+            })
+
+
+            $("#types li").each(function () {
+                $(this).on("click", function () {
+                    $("#types li").removeClass('active');
+                    $(this).addClass('active')
+                    let val = $(this).text().toLowerCase();
+                    if (val != 'none') {
+                        $('#pokedex li').filter(function () {
+                            console.log(this)
+                            $(this).toggle($(this).text().toLowerCase().indexOf(val) > -
+                                1)
+                        })
+                    }else{
+                        $('#pokedex li').css('display','inline')
+                    }
+                })
+            })
+        })
+
+        function Render(limit, offset) {
+            $("#pokedex").html('')
+            console.log(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`)
+            Pokedex(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`)
+
+            setTimeout(() => {
+                var list = document.querySelector("#pokedex").children
+                let el = [].slice.call(list)
+                el.sort(function (a, b) {
+                    return Number.parseInt(a.id) == Number.parseInt(b.id) ?
+                        0 :
+                        (Number.parseInt(a.id) > Number.parseInt(b.id) ? 1 : -1);
+                });
+                for (i = 0; i < el.length; ++i) {
+                    document.querySelector("#pokedex").appendChild(el[i]);
+                }
+            }, 1500)
+        }
+
+        $("#pokedex").on('mousewheel', function (e) {
+            if (this.getBoundingClientRect().top < 0) {
+                $('#menu').css({
+                    'position': 'fixed',
+                    'z-index': '10',
+                    'top': '0',
+                    'background': 'linear-gradient(to right, rgb(197, 230, 236), rgb(239, 187, 230))',
+                    'width': 'calc(100% - 40px)'
+                })
+            } else {
+                $('#menu').css({
+                    'position': 'relative',
+                    'width': '100%'
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
