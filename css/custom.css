@@ -1,7 +1,6 @@
 body {
 	background: #EFEFBB;
-	background: linear-gradient(to right, rgb(197, 230, 236), rgb(239, 187, 230));
-	color: white;
+	background: white;	
 	width: 100vw;
 	padding: 0;
 	margin: 0;
@@ -14,9 +13,8 @@ body {
 .container {
 	width: 100%;
 	box-sizing: border-box;
-	padding: 40px;
-	margin: 0 auto;
-	display: flex;
+	padding: 40px;	
+	display: flex;	
 	flex-direction: column;
 }
 
@@ -52,11 +50,13 @@ body {
 }
 
 .generations #menu li:hover {
-	background:  linear-gradient(to right, rgb(58, 62, 63), rgb(32, 32, 32));	
+	background:  red;
+	color: white;	
 }
 
 .generations #menu li.active {	
-	background:  linear-gradient(to right, rgb(58, 62, 63), rgb(32, 32, 32));		
+	background:  red;
+	color: white;		
 }
 
 .generations #types li{
@@ -69,35 +69,59 @@ body {
 }
 
 .generations #types li:hover {
-	background:  linear-gradient(to right, rgb(58, 62, 63), rgb(32, 32, 32));	
+	background:  red;	
+	color: white;
 }
 
 .generations #types li.active {	
-	background:  linear-gradient(to right, rgb(58, 62, 63), rgb(32, 32, 32));		
+	background: red;
+	color: white;		
 }
 
 
 h1 {
 	text-align: center;
 	font-size: 54px;
+	z-index: 20;
+}
+
+@media screen and (max-width: 800px){
+	h1{
+		font-size: 14pt;
+		margin-top: 80px;
+		margin-bottom: 50px;
+	}
+
+	.container{
+		padding: 10px;
+	}
+
+	.card{
+		max-width: 100%;
+	}
 }
 
 .pokedex {
 	box-sizing: border-box;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	grid-gap: 20px;
+	grid-gap: 10px;
 	padding-inline-start: 0;
+	padding: 0;
+	margin:0;
+	
 }
 
 .card {
-	list-style: none;
-	padding: 40px;
+	box-sizing: content-box;
+	list-style: none;	
 	color: #222;
 	text-align: center;
 	border-radius: 20px;
-	position: relative;
+	position: relative;	
 }
+
+
 
 .card::after {
 	content: "";

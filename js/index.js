@@ -31,13 +31,6 @@ var Pokemon = /** @class */ (function () {
                 var ret = "<li class='card " + types[0] + "' id='" + stats['id'] + "'>\n                    <img class='card-image' src='https://pokeres.bastionbot.org/images/pokemon/" + stats['id'] + ".png'>\n                    <h2 class='card-title'>" + stats.id + ". " + _this._name + "</h2>\n                    <p class='card-subtitle'>" + types.join(' | ') + "</p>\n             </li>";
                 document.querySelector('[data-js="pokedex"]').innerHTML += ret;
             });
-            var div = document.querySelector('#pokedex'), para = document.querySelectorAll('#pokedex li');
-            var paraArr = [].slice.call(para).sort(function (a, b) {
-                return a.id > b.id ? 1 : -1;
-            });
-            paraArr.forEach(function (p) {
-                div.appendChild(p);
-            });
         };
         this._name = name;
         this._api = api;

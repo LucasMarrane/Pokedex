@@ -13,6 +13,34 @@
         body {
             font-family: Pokemon;
         }
+
+        body::after {
+            box-sizing: border-box;
+            width: 110vw;
+            height: 600px;
+            content: "";
+            background-color: red;
+            position: absolute;
+            border: 10px solid black;
+            border-radius: 50%;
+            top: -400px; 
+            left: -5vw;          
+            z-index: -1;
+        }
+
+        body::before{
+            box-sizing: border-box;
+            width: 80px;
+            height: 80px;
+            content: "";
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            border: 10px solid black;
+            border-radius: 50%;
+            top: 160px;
+            left: calc(50vw - 40px);
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -126,13 +154,14 @@
                     'position': 'fixed',
                     'z-index': '10',
                     'top': '0',
-                    'background': 'linear-gradient(to right, rgb(197, 230, 236), rgb(239, 187, 230))',
+                    'background': 'white',
                     'width': 'calc(100% - 40px)'
                 })
             } else {
                 $('#menu').css({
                     'position': 'relative',
-                    'width': '100%'
+                    'width': '100%',
+                    'background': 'transparent',
                 })
             }
         })

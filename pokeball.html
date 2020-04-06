@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::after {
+            box-sizing: border-box;
+            width: 110vw;
+            height: 600px;
+            content: "";
+            background-color: red;
+            position: absolute;
+            border: 10px solid black;
+            border-radius: 50%;
+            top: -400px; 
+            left: -5vw;          
+            z-index: 0;
+        }
+
+        body::before{
+            box-sizing: border-box;
+            width: 80px;
+            height: 80px;
+            content: "";
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            border: 10px solid black;
+            border-radius: 50%;
+            top: 160px;
+            left: calc(50vw - 40px);
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

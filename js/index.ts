@@ -35,7 +35,7 @@ class Pokemon {
 
     GetPokemon = () => {
         let pokemon = fetch(this._api).then(response => response.json())
-        Promise.resolve(pokemon).then(stats => {
+        Promise.resolve(pokemon).then(stats => {            
             let types = stats['types'].map(typeInfo => typeInfo.type.name)
             let ret = `<li class='card ${types[0]}' id='${stats['id']}'>
                     <img class='card-image' src='https://pokeres.bastionbot.org/images/pokemon/${stats['id']}.png'>
