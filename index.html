@@ -4,19 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='description' content='An example of a pokedex made with JS, CSS3, HTML5'    >
+    <meta property='og:image'  content="https://i.etsystatic.com/12696278/r/il/bb21a8/1868980486/il_570xN.1868980486_d6zs.jpg">
     <title>Pokedex</title>
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/custom.css">
-   
     <style>
-        @font-face {font-family: "Pokemon";
-    src: url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot"); /* IE9*/
-    src: url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"), /* chrome firefox */
-    url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"), /* chrome firefox */
-    url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
-    url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg"); /* iOS 4.1- */
-}
+        @font-face {
+            font-family: "Pokemon";
+            src: url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot");
+            /* IE9*/
+            src: url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"),
+                /* IE6-IE8 */
+                url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"),
+                /* chrome firefox */
+                url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"),
+                /* chrome firefox */
+                url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"),
+                /* chrome firefox opera Safari, Android, iOS 4.2+*/
+                url("https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg");
+            /* iOS 4.1- */
+        }
+
         body {
             font-family: Pokemon;
         }
@@ -30,12 +39,12 @@
             position: absolute;
             border: 10px solid black;
             border-radius: 50%;
-            top: -400px; 
-            left: -5vw;          
+            top: -400px;
+            left: -5vw;
             z-index: -1;
         }
 
-        body::before{
+        body::before {
             box-sizing: border-box;
             width: 80px;
             height: 80px;
@@ -129,8 +138,8 @@
                             $(this).toggle($(this).text().toLowerCase().indexOf(val) > -
                                 1)
                         })
-                    }else{
-                        $('#pokedex li').css('display','inline')
+                    } else {
+                        $('#pokedex li').css('display', 'inline')
                     }
                 })
             })
